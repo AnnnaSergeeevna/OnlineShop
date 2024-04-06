@@ -1,0 +1,140 @@
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+
+:root {
+
+  --bs-1: #e7bec3;
+  --bs-2: #f4bcb0;
+  --bs-3: #bee7e2;
+  --bs-4: #008989;
+  --bs-5: #898900;
+  --bs-6: #b4840d;
+  --bs-7: #e06666;
+}
+
+.bg-custom {
+  background: linear-gradient(to right, #e7bec3, #f4bcb0);
+}
+
+.custom-nav-link {
+  margin-right: 40px;
+  animation: tracking-in-expand 2s ease-out both;
+}
+
+.tracking-in-expand {
+  -webkit-animation: tracking-in-expand 2s ease-out both;
+  animation: tracking-in-expand 2s ease-out both;
+}
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.custom-nav {
+  margin-right: 40px;
+  animation: tracking-in-contract 3s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+.tracking-in-contract {
+  -webkit-animation: tracking-in-contract 3s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-contract 3s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-contract
+ * ----------------------------------------
+ */
+@-webkit-keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+.primary-btn {
+  color: var(--bs-4);
+  border-color: var(--bs-4);
+}
+
+.primary-btn:hover {
+  background-color: var(--bs-4);
+  color: #fff;
+  border-color: var(--bs-4);
+}
+
+.custom-btn:active {
+  background-color: var(--bs-4);
+  border-color: var(--bs-4);
+}
+
+.secondary-btn {
+  color: var(--bs-7);
+  border-color: var(--bs-7);
+}
+
+.secondary-btn:hover {
+  background-color: var(--bs-7);
+  color: #fff;
+  border-color: var(--bs-7);
+}
+
+.secondary-btn:active {
+  background-color: var(--bs-7);
+  border-color: var(--bs-7);
+}
