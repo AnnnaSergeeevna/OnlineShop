@@ -3,16 +3,26 @@ import { makeAutoObservable } from 'mobx'
 export default class ItemStore {
     constructor() {
         this._types = [
-            { id: 2, name: 'Eau de Parfum' },
-            { id: 3, name: 'Eau de Toilette' },
-            { id: 4, name: 'Eau de Cologne' },
+            { id: 2, name: 'Aromatic' },
+            { id: 3, name: 'Chypre' },
+            { id: 4, name: 'Citrus' },
+            { id: 5, name: 'Floral' },
+            { id: 6, name: 'Leather' },
+            { id: 7, name: 'Woody' },
         ]
         this._brands = [
             { id: 1, name: 'Byredo' },
             { id: 2, name: 'Creed' },
             { id: 3, name: 'Vilhelm Parfumerie' },
             { id: 4, name: 'Xerjoff' },
-            { id: 5, name: 'By Killian' },
+            { id: 5, name: 'Serge Lutens' },
+            { id: 6, name: 'Amouage' },
+            { id: 7, name: 'Maison Francis Kurkdjian' },
+            { id: 8, name: 'Tom Ford' },
+            { id: 9, name: 'Montale' },
+            { id: 10, name: "Penhaligon's" },
+            { id: 11, name: 'Carner Barcelona' },
+
         ]
         this._items = [
             { id: 4, name: 'Voulez-vous Coucher Avec Moi', price: 300, rating: 0, img: '1bac30cb-b212-4cec-8eaa-1c8301bdcc85.jpg' },
@@ -31,6 +41,8 @@ export default class ItemStore {
             { id: 18, name: 'Carmina', price: 200, rating: 0, img: '10ad9add-76c7-4f89-91fd-c38d19d81c9a.jpg' },
             { id: 19, name: 'Moonlight in Heaven', price: 200, rating: 0, img: 'ba4cf096-79ae-4862-8d13-e4c412acd92c.jpg' }
         ]
+        this._selectedType = {}
+        this._selectedBrand = {}
         makeAutoObservable(this)
     }
 
@@ -43,6 +55,13 @@ export default class ItemStore {
     setUser(items) {
         this._items = items
     }
+    setSelectedType(type) {
+        this._selectedType = type
+    }
+    setSelectedBrand(brand) {
+        this._selectedBrand = brand
+    }
+
     get types() {
         return this._types
     }
@@ -51,6 +70,12 @@ export default class ItemStore {
     }
     get items() {
         return this._items
+    }
+    get selectedType() {
+        return this._selectedType
+    }
+    get selectedBrand() {
+        return this._selectedBrand
     }
 
 }
