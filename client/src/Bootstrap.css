@@ -30,7 +30,29 @@
   transform: translateY(50px);
 }
 
+.border-red {
+  display: flex;
+  width: 120px;
+  height: 70px;
+  margin: 10px;
+  margin-top: 40px;
 
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-color: var(--bs-4);
+}
+
+.border-grey {
+  width: 120px;
+  height: 70px;
+  margin: 10px;
+  margin-top: 40px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-color: var(--bs-10);
+}
 
 .bg-custom {
   background: linear-gradient(to right, #e7bec3, #f4bcb0);
