@@ -90,18 +90,18 @@ a.custom-link {
 .list-group.shopListGroup .list-group-item {
   border-color: var(--bs-10) !important;
   cursor: pointer;
-  margin-top: 10px;
+  padding-top: 25px;
 
 }
 
 .list-group-item.active-2 {
-  margin-top: 10px;
+  padding-top: 25px;
   background-color: var(--bs-3) !important;
   cursor: pointer;
 }
 
 .list-group-item.active-3 {
-  margin-top: 10px;
+  padding-top: 25px;
   background-color: var(--bs-2) !important;
   cursor: pointer;
 }
@@ -119,13 +119,13 @@ a.custom-link {
 }
 
 .list-group-item.active-6 {
-  margin-top: 10px;
+  padding-top: 25px;
   background-color: var(--bs-7) !important;
   cursor: pointer;
 }
 
 .list-group-item.active-7 {
-  margin-top: 10px;
+  padding-top: 25px;
   background-color: var(--bs-6) !important;
   cursor: pointer;
 }

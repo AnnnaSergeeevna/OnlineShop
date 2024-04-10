@@ -16,16 +16,14 @@ const BrandBar = observer(() => {
             <Carousel>
                 {[...Array(3)].map((_, index) => (
                     <Carousel.Item slide={true} interval={5000} key={index}>
-                        <div className="d-flex justify-content-around align-items-center w-100 h-100"
-                        >
-
+                        <div className="d-flex justify-content-center align-items-flex-end w-100 h-100">
                             {getRandomBrands().map(brand => (
                                 <Card
                                     key={brand.id}
-                                    className='p-1 m-4 w-100 h-100 align-items-center '
-                                    style={{ maxWidth: '120px', minHeight: '60px' }}
+                                    className='p-1 m-4 w-100 h-100 justify-content-center align-items-center-!important'
+                                    style={{ maxWidth: '120px', minHeight: '60px', cursor: 'pointer' }}
                                     onClick={() => item.setSelectedBrand(brand)}
-                                    border={brand.id === item.selectedBrand.id ? 'light-grey' : 'grey'}
+                                    border={brand.id === item.selectedBrand.id ? 'red' : 'grey'}
                                 >
                                     <div className="d-flex align-items-center justify-content-center" >
                                         {brand.name}
