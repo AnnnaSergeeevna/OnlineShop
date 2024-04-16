@@ -1,16 +1,19 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../index';
 import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { SHOP_ROUTE } from '../utils/consts';
 import { observer } from 'mobx-react-lite';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Bootstrap.css';
+import { ADMIN_ROUTE } from '../utils/consts';
+import { LOGIN_ROUTE } from '../utils/consts';
+
 
 const NavBar = observer(() => {
     const { user } = useContext(Context);
-    const [showButtons, setShowButtons] = useState(false);
-
+    const [showButtons, setShowButtons] = useState(true);
+    const navigate = useNavigate();
     const handleAuthClick = () => {
         user.setIsAuth(true);
         setShowButtons(true);
@@ -25,6 +28,7 @@ const NavBar = observer(() => {
                     <Nav className="nav custom-nav">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">Link</Nav.Link>
+
                         <NavDropdown title="Dropdown" id="basic-nav-dropdown" className=''>
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
@@ -36,18 +40,20 @@ const NavBar = observer(() => {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
+
                     </Nav>
                     <div>
                         {user.isAuth ? (
                             showButtons && (<>
-                                <Button className="primary-btn1 m-2" variant="outline-primary">Authorization</Button>
-                                <Button className="primary-btn2 m-2" variant="outline-primary">Admin panel</Button>
+                                <Button className="primary-btn1 m-2" variant="outline-primary" onClick={() => navigate(LOGIN_ROUTE)} style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}>Authorization</Button>
+                                <Button className="primary-btn2 m-2" variant="outline-primary" onClick={() => navigate(ADMIN_ROUTE)} style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}>Admin panel</Button>
                             </>)
                         ) : (
                             <Button
                                 className="secondary-btn m-2"
                                 variant="outline-primary"
                                 onClick={handleAuthClick}
+                                style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}
                             >
                                 Authorization
                             </Button>
@@ -60,7 +66,6 @@ const NavBar = observer(() => {
 });
 
 export default NavBar;
-
 
 
 

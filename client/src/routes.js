@@ -6,16 +6,20 @@ import ItemPage from "./pages/ItemPage";
 import { ADMIN_ROUTE, BASKET_ROUTE, ITEM_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "./utils/consts"
 
 export const authRoutes = [
-    {
-        path: ADMIN_ROUTE,
-        Component: Admin
-    },
+    // {
+    //     path: ADMIN_ROUTE,
+    //     Component: Admin
+    // },
     {
         path: BASKET_ROUTE,
         Component: Basket
     }
 ]
 export const publicRoutes = [
+    {
+        path: ADMIN_ROUTE,
+        Component: Admin
+    },
     {
         path: LOGIN_ROUTE,
         Component: Auth

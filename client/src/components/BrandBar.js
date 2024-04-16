@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Card, Carousel } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../index';
+import '../Bootstrap.css';
 
 const BrandBar = observer(() => {
     const { item } = useContext(Context);
@@ -16,13 +17,13 @@ const BrandBar = observer(() => {
                     }
                     return acc;
                 }, []).map((group, groupIndex) => (
-                    <Carousel.Item key={groupIndex} slide='true' interval={5000}>
-                        <div className="d-flex justify-content-center align-items-end w-100 h-100">
+                    <Carousel.Item key={groupIndex} slide='true' interval={500000}>
+                        <div className="d-flex justify-content-center align-items-end">
                             {group.map(brand => (
                                 <Card
                                     key={brand.id}
                                     className={item.selectedBrand.id === brand.id ? 'border-red' : 'border-grey'}
-                                    style={{ maxWidth: '120px', minHeight: '60px', cursor: 'pointer' }}
+                                    style={{ cursor: 'pointer' }}
                                     onClick={() => {
                                         console.log('Clicked brand id:', brand.id);
                                         console.log('Selected brand:', brand.id);
@@ -30,7 +31,7 @@ const BrandBar = observer(() => {
                                         item.setSelectedBrand(brand);
                                     }}
                                 >
-                                    <div className="d-flex align-items-center justify-content-center">
+                                    <div style={{ height: '70px', display: 'flex', alignItems: 'center' }}>
                                         {brand.name}
                                     </div>
                                 </Card>
