@@ -17,7 +17,7 @@ const BrandBar = observer(() => {
                     }
                     return acc;
                 }, []).map((group, groupIndex) => (
-                    <Carousel.Item key={groupIndex} slide='true' interval={500000}>
+                    <Carousel.Item key={groupIndex} slide='true' interval={3000}>
                         <div className="d-flex justify-content-center align-items-end">
                             {group.map(brand => (
                                 <Card
