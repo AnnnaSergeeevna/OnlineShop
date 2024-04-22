@@ -1,12 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { Context } from '../index';
-import { Container, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { SHOP_ROUTE } from '../utils/consts';
+import { ListGroup } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Bootstrap.css';
-import ItemStore from '../store/ItemStore';
 
 const TypeBar = observer(() => {
     const { item } = useContext(Context);

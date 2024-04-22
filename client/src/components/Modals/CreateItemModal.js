@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { Context } from '../../index';
 import { Button, Modal, Form, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,8 +6,6 @@ import '../../Bootstrap.css';
 
 export function CreateItemModal(props) {
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     const { item } = useContext(Context);
     const [info, setInfo] = useState([])
     const addInfo = () => {

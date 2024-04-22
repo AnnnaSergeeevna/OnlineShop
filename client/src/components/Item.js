@@ -1,13 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 import { Card, Image } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Bootstrap.css';
-import ItemStore from '../store/ItemStore';
-import star from './../assets/Black_star.svg.png';
 import { ITEM_ROUTE } from '../utils/consts';
 
 

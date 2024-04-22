@@ -5,8 +5,6 @@ import '../../Bootstrap.css';
 export function CreateBrandModal(props) {
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
         <>

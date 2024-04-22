@@ -4,7 +4,6 @@ import TypeBar from '../components/TypeBar';
 import '../Bootstrap.css';
 import BrandBar from '../components/BrandBar';
 import ItemList from '../components/ItemList';
-import ColExample from '../components/ColExample';
 
 
 const Shop = () => {
