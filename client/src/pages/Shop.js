@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite';
 import BrandBar from '../components/BrandBar';
 import ItemList from '../components/ItemList';
 import { fetchBrands, fetchItems, fetchTypes } from '../http/itemAPI';
+import Pages from '../components/Pages';
 
 
 
@@ -15,14 +16,26 @@ const Shop = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => item.setTypes(data))
         fetchBrands().then(data => item.setBrands(data))
-        fetchItems().then(data => item.setItems(data.rows))
+        fetchItems(null, null, 1, 6).then(data => {
+            item.setItems(data.rows)
+            item.setTotalCount(data.count)
+        })
     }, [])
+
+    useEffect(() => {
+        fetchItems(item.selectedType.id, item.selectedBrand.id, item.page, 6).then(data => {
+            item.setItems(data.rows)
+            item.setTotalCount(data.count)
+        })
+    }, [item.page, item.selectedType, item.selectedBrand])
+
     return (<>
         <Container>
             <Row>
                 <Col md={3}><TypeBar /></Col>
                 <Col md={9}><BrandBar /><ItemList /></Col>
             </Row>
+            <Pages />
         </Container>
 
     </>);
