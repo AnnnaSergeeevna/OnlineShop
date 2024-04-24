@@ -7,7 +7,9 @@ import '../Bootstrap.css';
 
 const TypeBar = observer(() => {
     const { item } = useContext(Context);
-
+    if (!item.types) {
+        return null;
+    }
 
     return (<>
         <h1 style={{ fontFamily: 'Poiret One' }}>Olfactory Groups</h1>

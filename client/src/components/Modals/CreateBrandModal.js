@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import '../../Bootstrap.css';
+import { createBrand } from '../../http/itemAPI';
 
-export function CreateBrandModal(props) {
-    const [show, setShow] = useState(false);
-
+export function CreateBrandModal({ show, onHide }) {
+    const [value, setValue] = useState('')
+    const addBrand = () => {
+        createBrand({
+            name: value
+        }).then(data => {
+            setValue('')
+            onHide()
+        })
+    }
 
     return (
         <>
-            <Modal show={props.show} onHide={props.onHide}>
+            <Modal show={show} onHide={onHide}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Brand</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Control placeholder={'Add Brand Name'} />
+                        <Form.Control
+                            value={value}
+                            onChange={e => setValue(e.target.value)}
+                            placeholder={'Add Brand Name'} />
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="primary-btn1 m-2" variant="outline-primary" style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }} onClick={props.onHide}>
+                    <Button className="primary-btn1 m-2" variant="outline-primary" style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }} onClick={onHide}>
                         Close
                     </Button>
-                    <Button className="primary-btn2 m-2" variant="outline-primary" style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }} onClick={props.onHide}>
+                    <Button className="primary-btn2 m-2" variant="outline-primary" style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }} onClick={addBrand}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

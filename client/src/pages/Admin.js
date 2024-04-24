@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { CreateTypeModal } from '../components/Modals/CreateTypeModal';
 import { CreateBrandModal } from '../components/Modals/CreateBrandModal';
-import CreateItemModal from '../components/Modals/CreateItemModal';
+import { CreateItemModal } from '../components/Modals/CreateItemModal';
 import '../Bootstrap.css';
 
 const Admin = () => {

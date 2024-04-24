@@ -18,6 +18,10 @@ const NavBar = observer(() => {
         user.setIsAuth(true);
         setShowButtons(true);
     }
+    const LogOut = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+    }
 
     return (
         <Navbar expand="lg" className="bg-custom">
@@ -45,14 +49,14 @@ const NavBar = observer(() => {
                     <div>
                         {user.isAuth ? (
                             showButtons && (<>
-                                <Button className="primary-btn1 m-2" variant="outline-primary" onClick={() => navigate(LOGIN_ROUTE)} style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}>Authorization</Button>
                                 <Button className="primary-btn2 m-2" variant="outline-primary" onClick={() => navigate(ADMIN_ROUTE)} style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}>Admin panel</Button>
+                                <Button className="primary-btn1 m-2" variant="outline-primary" onClick={() => LogOut()} style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}>Exit</Button>
                             </>)
                         ) : (
                             <Button
                                 className="secondary-btn m-2"
                                 variant="outline-primary"
-                                onClick={handleAuthClick}
+                                onClick={() => navigate(LOGIN_ROUTE)}
                                 style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}
                             >
                                 Authorization

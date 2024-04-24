@@ -12,13 +12,14 @@ class ItemController {
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
             const item = await Item.create({ name, price, brandId, typeId, img: fileName })
 
+            console.log(info)
             if (info) {
                 info = JSON.parse(info)
                 info.forEach(i => {
                     ItemInfo.create({
                         title: i.title,
                         description: i.description,
-                        deviceId: device.id
+                        itemId: item.id
                     })
                 });
             }
