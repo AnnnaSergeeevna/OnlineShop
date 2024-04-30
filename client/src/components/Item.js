@@ -16,7 +16,7 @@ const Item = observer(({ item }) => {
             <Card style={{ cursor: 'pointer' }} border='light'
                 onClick={() => navigate(`${ITEM_ROUTE}/${item.id}`)}
             >
-                <Image height={150} src={process.env.REACT_APP_API_URL + item.img} />
+                <Image style={{ height: 150 }} src={process.env.REACT_APP_API_URL + item.img} thumbnail />
                 <div className='d-flex mt-1 align-items-center justify-content-between'>
                     <div>Perfume</div>
                     <div className='d-flex'>
