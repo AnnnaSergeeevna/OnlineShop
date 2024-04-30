@@ -22,12 +22,9 @@ const BrandBar = observer(() => {
                             {group.map(brand => (
                                 <Card
                                     key={brand.id}
-                                    className={item.selectedBrand.id === brand.id ? 'border-red' : 'border-grey'}
+                                    className={`border-grey ${item.selectedBrand && item.selectedBrand.id == brand.id ? 'selected' : ''}`}
                                     style={{ cursor: 'pointer' }}
                                     onClick={() => {
-                                        console.log('Clicked brand id:', brand.id);
-                                        console.log('Selected brand:', brand.id);
-                                        console.log('Current brand:', item.selectedBrand);
                                         item.setSelectedBrand(brand);
                                     }}
                                 >

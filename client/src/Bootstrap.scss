@@ -1,11 +1,17 @@
+$primary: #a9476d;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/reboot";
+
 :root {
-  --primary: #a9476d !important;
   --bs: #ffe8eb;
   --bs-1: #e9bec3;
   --bs-2: #f4bcb0;
   --bs-3: #b1e8e1;
   --bs-4: #a9476d;
-  --bs-5: #faca62;
+  --bs-5: #f7c24f;
   --bs-6: #898900;
   --bs-7: #b4840d;
   --bs-8: #d1686d;
@@ -38,16 +44,16 @@
   transform: translateY(50px);
 }
 
-.border-red {
+.carousel {
+  height: 140px;
+}
+
+.card.selected {
   display: flex;
   width: 120px;
-  height: 70px;
-  margin: 10px;
-  margin-top: 40px;
-  padding: 10px;
   justify-content: center;
   align-items: center;
-  border-color: var(--bs-4);
+  border: solid var(--bs-4);
 }
 
 .border-grey {
@@ -55,10 +61,9 @@
   height: 70px;
   margin: 10px;
   margin-top: 40px;
-  padding: 10px;
   justify-content: center;
   align-items: center;
-  border-color: var(--bs-10);
+  border: 3px solid var(--bs-10);
 }
 
 .bg-custom {
@@ -234,25 +239,6 @@ a.custom-link {
   }
 }
 
-.secondary-btn {
-  color: var(--bs-8) !important;
-  border-color: var(--bs-8) !important;
-  height: 40px;
-  line-height: 1;
-  padding: 0 10px;
-}
-
-.secondary-btn:hover {
-  background-color: var(--bs-8) !important;
-  color: #fff !important;
-  border-color: var(--bs-8) !important;
-}
-
-.secondary-btn:active {
-  background-color: var(--bs-8) !important;
-  border-color: var(--bs-8) !important;
-}
-
 .primary-btn1 {
   color: var(--bs-4);
   border-color: var(--bs-4);
@@ -274,9 +260,15 @@ a.custom-link {
   border-color: var(--bs-4) !important;
 }
 
+.btn-outline-primary:hover {
+  background-color: var(--bs-4) !important;
+  border-color: var(--bs-4) !important;
+}
+
 .btn-outline-primary:active {
   background-color: var(--bs-4) !important;
   border-color: var(--bs-4) !important;
+  animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .primary-btn2 {
@@ -312,65 +304,63 @@ a.custom-link {
   }
 }
 
-.primary-btn3 {
+.primary-btn-to-cart {
   color: var(--bs-4) !important;
   border-color: var(--bs-4) !important;
   height: 40px;
   line-height: 1;
   padding: 0 10px;
-  animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-.primary-btn3:hover {
+.primary-btn-to-cart:hover {
 
   background-color: var(--bs-4) !important;
   color: #fff !important;
   border-color: var(--bs-4) !important;
 }
 
-.primary-btn3:active {
+.primary-btn-to-cart:active {
   background-color: var(--bs-4) !important;
   border-color: var(--bs-4) !important;
-  /* animation: slide-out-blurred-top 0.5s cubic-bezier(0.755, 0.050, 0.855, 0.060) both; */
-  animation: slide-out-blurred-top 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: slide-out-top 3s ease-in;
 }
 
-.slide-out-blurred-top {
-  -webkit-animation: slide-out-blurred-top 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-  animation: slide-out-blurred-top 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
 
-@keyframes slide-out-blurred-top {
+@keyframes slide-out-top {
   0% {
-    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-    transform: translateY(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 0%;
-    transform-origin: 50% 0%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
+    transform: translateY(0);
     opacity: 1;
   }
 
   100% {
-    -webkit-transform: translateY(-1000px) scaleY(2) scaleX(0.2);
-    transform: translateY(-1000px) scaleY(2) scaleX(0.2);
-    -webkit-transform-origin: 50% 0%;
-    transform-origin: 50% 0%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
+    transform: translateY(-1000px);
     opacity: 0;
   }
 }
 
 
+.secondary-btn,
+.btn-outline-secondary {
+  color: var(--bs-8) !important;
+  border-color: var(--bs-8) !important;
+  height: 40px;
+  line-height: 1;
+  padding: 0 10px;
+}
 
+.secondary-btn:hover,
+.btn-outline-secondary:hover {
+  background-color: var(--bs-8) !important;
+  color: #fff !important;
+  border-color: var(--bs-8) !important;
+}
 
-
-
-
-
-
-
+.secondary-btn:active,
+.btn-outline-secondary:active {
+  background-color: var(--bs-8) !important;
+  border-color: var(--bs-8) !important;
+  animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
 
 .scale-up-center {
   -webkit-animation: scale-up-center 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -388,3 +378,6 @@ a.custom-link {
     transform: scale(1);
   }
 }
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";

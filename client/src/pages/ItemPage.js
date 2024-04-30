@@ -7,6 +7,9 @@ import { fetchItem } from '../http/itemAPI';
 
 const ItemPage = () => {
     const [item, setItem] = useState({ info: [] });
+    const [isActive, setIsActive] = useState(false);
+
+
     const { id } = useParams()
     useEffect(() => {
         fetchItem(id).then(data => setItem(data))
@@ -28,10 +31,10 @@ const ItemPage = () => {
                     <Card>
                         <h3>{item.price} €</h3>
                         <Button
-                            // className={`primary-btn3 ${isActive ? 'active' : ''}`}
-                            variant="outline-primary"
+                            className={`primary-btn-to-cart ${isActive ? 'active' : ''}`}
+                            // variant="outline-primary"
                             style={{ background: 'white' }}
-                        // onClick={() => setIsActive(true)}
+                            onClick={() => setIsActive(true)}
                         >
                             ADD TO CART
                         </Button>

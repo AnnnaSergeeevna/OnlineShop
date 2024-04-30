@@ -5,7 +5,7 @@ import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { SHOP_ROUTE } from '../utils/consts';
 import { observer } from 'mobx-react-lite';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Bootstrap.css';
+import '../Bootstrap.scss';
 import { ADMIN_ROUTE } from '../utils/consts';
 import { LOGIN_ROUTE } from '../utils/consts';
 
@@ -55,9 +55,8 @@ const NavBar = observer(() => {
                         ) : (
                             <Button
                                 className="secondary-btn m-2"
-                                variant="outline-primary"
+                                variant="outline-secondary"
                                 onClick={() => navigate(LOGIN_ROUTE)}
-                                style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}
                             >
                                 Authorization
                             </Button>

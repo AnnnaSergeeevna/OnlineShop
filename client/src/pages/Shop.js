@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import TypeBar from '../components/TypeBar';
-import '../Bootstrap.css';
+import '../Bootstrap.scss';
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 import BrandBar from '../components/BrandBar';
@@ -33,11 +33,13 @@ const Shop = observer(() => {
         <Container>
             <Row>
                 <Col md={3}><TypeBar /></Col>
-                <Col md={9}><BrandBar /><ItemList /></Col>
+                <Col md={9}>
+                    <BrandBar />
+                    <ItemList />
+                    <Pages />
+                </Col>
             </Row>
-            <Pages />
         </Container>
-
     </>);
 })
 export default Shop;

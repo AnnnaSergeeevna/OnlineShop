@@ -19,9 +19,6 @@ const TypeBar = observer(() => {
                     active={type.id === item.selectedType.id}
                     className={`list-group-item ${type.id === item.selectedType.id ? `active-${type.id}` : ''}`}
                     onClick={() => {
-                        console.log('Clicked type id:', type.id)
-                        console.log('Selected type:', type.id)
-                        console.log('Current type:', item.selectedTypeId)
                         item.setSelectedType(type)
                     }}
                     key={type.id} id={type.id}>

@@ -13,10 +13,10 @@ const Item = observer(({ item }) => {
     const navigate = useNavigate()
     return (<>
         <Col md={4} className='d-flex mt-1 align-items-center justify-content-center'>
-            <Card style={{ width: 150, cursor: 'pointer' }} border='light'
+            <Card style={{ cursor: 'pointer' }} border='light'
                 onClick={() => navigate(`${ITEM_ROUTE}/${item.id}`)}
             >
-                <Image width={150} height={150} src={process.env.REACT_APP_API_URL + item.img} />
+                <Image height={150} src={process.env.REACT_APP_API_URL + item.img} />
                 <div className='d-flex mt-1 align-items-center justify-content-between'>
                     <div>Perfume</div>
                     <div className='d-flex'>

@@ -19,7 +19,7 @@ const App = observer(() => {
         user.setUser(true)
         user.setIsAuth(true)
       }).finally(() => setLoad(false))
-    }, 2000)
+    })
   }, [])
   if (load) {
     return <Spinner animation="grow" variant="secondary" className='d-flex justify-content-center align-items-center' />
