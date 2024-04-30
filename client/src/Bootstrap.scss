@@ -86,11 +86,7 @@ a.custom-link {
   animation: tracking-in-expand 2s ease-out both;
 }
 
-/**
- * ----------------------------------------
- * animation tracking-in-expand
- * ----------------------------------------
- */
+
 @-webkit-keyframes tracking-in-expand {
   0% {
     letter-spacing: -0.5em;
@@ -119,6 +115,14 @@ a.custom-link {
   100% {
     opacity: 1;
   }
+}
+
+.custom-nav-img {
+  animation: slideLeft 1s forwards, fadeIn 1s forwards;
+}
+
+.custom-nav-img.active {
+  animation: fadeInDown 1s ease forwards;
 }
 
 .list-group.shopListGroup .list-group-item {
@@ -305,6 +309,7 @@ a.custom-link {
 }
 
 .primary-btn-to-cart {
+  // background-color: #fff !important;
   color: var(--bs-4) !important;
   border-color: var(--bs-4) !important;
   height: 40px;
@@ -313,18 +318,16 @@ a.custom-link {
 }
 
 .primary-btn-to-cart:hover {
-
   background-color: var(--bs-4) !important;
   color: #fff !important;
   border-color: var(--bs-4) !important;
 }
 
-.primary-btn-to-cart:active {
+.primary-btn-to-cart.active {
   background-color: var(--bs-4) !important;
   border-color: var(--bs-4) !important;
-  animation: slide-out-top 3s ease-in;
+  animation: slide-out-top 1s ease-in, forwards;
 }
-
 
 @keyframes slide-out-top {
   0% {
@@ -333,10 +336,11 @@ a.custom-link {
   }
 
   100% {
-    transform: translateY(-1000px);
+    transform: translateY(-100px);
     opacity: 0;
   }
 }
+
 
 
 .secondary-btn,
@@ -379,5 +383,44 @@ a.custom-link {
   }
 }
 
+
+
+
+@keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap";

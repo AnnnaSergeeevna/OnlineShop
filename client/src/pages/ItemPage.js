@@ -11,9 +11,20 @@ const ItemPage = () => {
 
 
     const { id } = useParams()
+
     useEffect(() => {
         fetchItem(id).then(data => setItem(data))
+        setIsActive(false);
     }, [])
+
+    const handleClick = () => {
+        setIsActive(true);
+        setTimeout(() => {
+            setIsActive(false)
+        }, "1000");
+
+    };
+
     return (
         <Container className='mt-3'>
             <Row>
@@ -32,9 +43,8 @@ const ItemPage = () => {
                         <h3>{item.price} €</h3>
                         <Button
                             className={`primary-btn-to-cart ${isActive ? 'active' : ''}`}
-                            // variant="outline-primary"
                             style={{ background: 'white' }}
-                            onClick={() => setIsActive(true)}
+                            onClick={handleClick}
                         >
                             ADD TO CART
                         </Button>
@@ -45,4 +55,7 @@ const ItemPage = () => {
     );
 }
 
+
 export default ItemPage;
+
+

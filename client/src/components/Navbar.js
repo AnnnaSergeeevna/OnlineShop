@@ -1,19 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../index';
-import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown, Button, Image } from 'react-bootstrap';
 import { SHOP_ROUTE } from '../utils/consts';
 import { observer } from 'mobx-react-lite';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Bootstrap.scss';
 import { ADMIN_ROUTE } from '../utils/consts';
 import { LOGIN_ROUTE } from '../utils/consts';
+import { BASKET_ROUTE } from '../utils/consts';
+import { user } from '../store/UserStore';
+import shoppingBag from '../shopping-bag_icon.svg';
 
 
 const NavBar = observer(() => {
-    const { user } = useContext(Context);
-    const [showButtons, setShowButtons] = useState(true);
     const navigate = useNavigate();
+    const { user, basket } = useContext(Context);
+    const [showButtons, setShowButtons] = useState(true);
     const handleAuthClick = () => {
         user.setIsAuth(true);
         setShowButtons(true);
@@ -21,6 +24,11 @@ const NavBar = observer(() => {
     const LogOut = () => {
         user.setUser({})
         user.setIsAuth(false)
+    }
+    const handleBasketClick = () => {
+        const img = document.getElementById('basket-img');
+        img.classList.add('active');
+        navigate(BASKET_ROUTE);
     }
 
     return (
@@ -44,7 +52,6 @@ const NavBar = observer(() => {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
-
                     </Nav>
                     <div>
                         {user.isAuth ? (
@@ -63,14 +70,19 @@ const NavBar = observer(() => {
                         )}
                     </div>
                 </Navbar.Collapse>
+                <img
+                    id="basket-img"
+                    src={shoppingBag}
+                    alt="Shopping Bag"
+                    style={{ height: 60, backgroundColor: 'transparent', cursor: 'pointer' }}
+                    onClick={handleBasketClick}
+                    className='custom-nav-img'
+                />
             </Container>
         </Navbar>
     );
 });
 
 export default NavBar;
-
-
-
 
 
