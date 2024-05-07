@@ -1,28 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Col, Container, Row, Card, Image, Button } from 'react-bootstrap';
 import star from './../assets/Black_star.svg.png';
 import '../Bootstrap.css';
+import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
 import { fetchItem } from '../http/itemAPI';
+import { Context } from '../index';
+import { addItemToBasket } from '../http/basketAPI';
 
-const ItemPage = () => {
+
+const ItemPage = observer(() => {
+    const { basket, user } = useContext(Context);
+    const { id } = useParams()
     const [item, setItem] = useState({ info: [] });
     const [isActive, setIsActive] = useState(false);
 
-
-    const { id } = useParams()
-
     useEffect(() => {
-        fetchItem(id).then(data => setItem(data))
-        setIsActive(false);
-    }, [])
+        const fetchItemData = async () => {
+            const data = await fetchItem(id);
+            console.log(data)
+            setItem(data);
+            const basketId = basket.getBasketId();
+            console.log(basket.getBasketId())
+            if (basketId) {
+                basket.setBasketId(basketId);
+            } else {
+                console.error('BasketId is not available.');
+            }
+        };
+        fetchItemData();
+    }, [basket, id]);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         setIsActive(true);
-        setTimeout(() => {
-            setIsActive(false)
-        }, "1000");
-
+        const basketId = basket.getBasketId();
+        const itemId = item.id
+        if (basketId) {
+            try {
+                await addItemToBasket(basketId, itemId);
+                console.log(basketId, itemId)
+            } catch (error) {
+                console.error('Error adding item to basket:', error);
+            } finally {
+                setIsActive(false);
+            }
+        } else {
+            console.error('BasketId is not available.');
+        }
     };
 
     return (
@@ -53,7 +77,7 @@ const ItemPage = () => {
             </Row>
         </Container>
     );
-}
+})
 
 
 export default ItemPage;

@@ -11,6 +11,7 @@ import { LOGIN_ROUTE } from '../utils/consts';
 import { BASKET_ROUTE } from '../utils/consts';
 import { user } from '../store/UserStore';
 import shoppingBag from '../shopping-bag_icon.svg';
+import FetchBasket from './fetchBasket';
 
 
 const NavBar = observer(() => {
@@ -29,6 +30,9 @@ const NavBar = observer(() => {
         const img = document.getElementById('basket-img');
         img.classList.add('active');
         navigate(BASKET_ROUTE);
+        setTimeout(() => {
+            img.classList.remove('active')
+        }, 5)
     }
 
     return (
@@ -70,14 +74,14 @@ const NavBar = observer(() => {
                         )}
                     </div>
                 </Navbar.Collapse>
-                <img
+                <FetchBasket><img
                     id="basket-img"
                     src={shoppingBag}
                     alt="Shopping Bag"
                     style={{ height: 60, backgroundColor: 'transparent', cursor: 'pointer' }}
                     onClick={handleBasketClick}
                     className='custom-nav-img'
-                />
+                /></FetchBasket>
             </Container>
         </Navbar>
     );

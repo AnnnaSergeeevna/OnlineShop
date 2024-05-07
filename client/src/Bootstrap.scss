@@ -118,11 +118,14 @@ a.custom-link {
 }
 
 .custom-nav-img {
-  animation: slideLeft 1s forwards, fadeIn 1s forwards;
+
+  // animation: slideLeft 1s forwards, fadeIn 1s forwards;
+  animation: scale-up-center 3s cubic-bezier(0.390, 0.675, 0.665, 1.000) both;
+
 }
 
 .custom-nav-img.active {
-  animation: fadeInDown 1s ease forwards;
+  animation: scale-up-center-active 1s cubic-bezier(0.390, 0.675, 0.665, 1.000) both;
 }
 
 .list-group.shopListGroup .list-group-item {
@@ -373,8 +376,8 @@ a.custom-link {
 
 @keyframes scale-up-center {
   0% {
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
   }
 
   100% {

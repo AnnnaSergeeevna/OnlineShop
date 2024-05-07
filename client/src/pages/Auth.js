@@ -5,9 +5,11 @@ import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "../utils/consts";
 import { login, registration } from '../http/userAPI';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
+import { createBasket } from '../http/basketAPI';
+
 
 const Auth = observer(() => {
-    const { user } = useContext(Context)
+    const { user, basket } = useContext(Context)
     const location = useLocation();
     const navigate = useNavigate()
     const isLogin = location.pathname === LOGIN_ROUTE;
@@ -23,17 +25,19 @@ const Auth = observer(() => {
             }
             if (isLogin) {
                 data = await login(email, password);
+                const basketId = data.basketId;
+                basket.setBasket(basket)
+                basket.setBasketId(basketId);
             } else {
-                data = await registration(email, password);
+                data = await registration(email, password)
             }
-            user.setUser(user)
+            user.setUser(data)
             user.setIsAuth(true)
             navigate(SHOP_ROUTE)
         } catch (e) {
             alert(e.response.data.message)
         }
     }
-
 
     return (
         <Container

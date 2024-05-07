@@ -8,13 +8,26 @@ export const registration = async (email, password) => {
 }
 
 export const login = async (email, password) => {
-    const { data } = await $host.post('api/user/login', { email, password })
-    localStorage.setItem('token', data.token)
-    return jwtDecode(data.token)
+    try {
+        const { data } = await $host.post('api/user/login', { email, password });
+        localStorage.setItem('token', data.token);
+        const decodedToken = jwtDecode(data.token);
+        localStorage.setItem('basketId', decodedToken.basketId);
+        console.log(data)
+        return { ...decodedToken, basketId: decodedToken.basketId };
+    } catch (error) {
+        throw error;
+    }
 }
 export const check = async () => {
-    const { data } = await $authHost.get('api/user/auth')
-    localStorage.setItem('token', data.token)
-    return jwtDecode(data.token)
+    try {
+        const { data } = await $authHost.get('api/user/auth');
+        localStorage.setItem('token', data.token);
+        const decodedToken = jwtDecode(data.token);
+        const basketId = decodedToken.basketId;
+        return { ...decodedToken, basketId };
+    } catch (error) {
+        throw error;
+    }
 }
 
