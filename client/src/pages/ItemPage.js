@@ -18,10 +18,8 @@ const ItemPage = observer(() => {
     useEffect(() => {
         const fetchItemData = async () => {
             const data = await fetchItem(id);
-            console.log(data)
             setItem(data);
             const basketId = basket.getBasketId();
-            console.log(basket.getBasketId())
             if (basketId) {
                 basket.setBasketId(basketId);
             } else {

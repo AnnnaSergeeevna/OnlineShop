@@ -16,7 +16,6 @@ export const removeItemFromBasket = async (basketItemId) => {
 }
 export const fetchBasket = async () => {
     const { data } = await $authHost.get('basket/getone')
-    console.log(data);
     return data
 }
 export const fetchBasketItems = async (basketId) => {

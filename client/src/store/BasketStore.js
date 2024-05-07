@@ -14,8 +14,6 @@ export default class BasketStore {
 
     setBasketId(basketId) {
         this._basketId = basketId;
-        console.log(basketId)
-
     }
     setBasketItems(basketItems) {
         this._basketItems = basketItems;
@@ -25,7 +23,6 @@ export default class BasketStore {
     }
 
     getBasketId() {
-        console.log(this._basketId)
         return this._basketId;
     }
     getBasketItems() {

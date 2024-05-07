@@ -13,13 +13,20 @@ const BasketItem = ({ basketItem }) => {
     const navigate = useNavigate();
 
     return (
-        <tr>
-            <td><Image src={process.env.REACT_APP_API_URL + basketItem.item.img} style={{ width: '50px', height: '50px' }} /></td>
-            <td>{basketItem.item.name}</td>
-            <td>{basketItem.item.price} €</td>
-            <td>{basketItem.item.price} €</td>
-            <td>{basketItem.item.price} €</td>
-            <td><button onClick={() => navigate(`${ITEM_ROUTE}/${basketItem.item.id}`)}>Details</button></td>
+        <tr className='align-items-center justify-content-center'>
+            <td><Image src={process.env.REACT_APP_API_URL + basketItem.img} style={{ width: '50px', height: '50px' }} /></td>
+            <td>{basketItem.name}</td>
+            <td>{basketItem.price} €</td>
+            <td>{basketItem.quantity}</td>
+            <td>{basketItem.totalPrice} €</td>
+            <td>
+                <button className="primary-btn1 m-2"
+                    style={{ borderColor: 'var(--bs-4)', color: 'var(--bs-4)' }}
+                    variant="outline-primary"
+                    onClick={() => navigate(`${ITEM_ROUTE}/${basketItem.id}`)}>
+                    Details
+                </button>
+            </td>
         </tr>
     );
 }

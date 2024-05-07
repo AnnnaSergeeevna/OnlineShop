@@ -13,7 +13,6 @@ export const login = async (email, password) => {
         localStorage.setItem('token', data.token);
         const decodedToken = jwtDecode(data.token);
         localStorage.setItem('basketId', decodedToken.basketId);
-        console.log(data)
         return { ...decodedToken, basketId: decodedToken.basketId };
     } catch (error) {
         throw error;
