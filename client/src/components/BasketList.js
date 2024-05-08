@@ -55,7 +55,9 @@ const BasketList = observer(() => {
                     <th>Image</th>
                     <th>Name</th>
                     <th>Price, €</th>
+                    <th>-</th>
                     <th>Quantity</th>
+                    <th>+</th>
                     <th>Amount, €</th>
                     <th>Details</th>
                 </tr>

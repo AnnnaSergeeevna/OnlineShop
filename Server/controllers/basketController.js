@@ -18,15 +18,19 @@ class basketController {
             next(ApiError.internal(error.message));
         }
     }
-    // async addBasketItem(req, res, next) {
-    //     try {
-    //         const { basketId, itemId } = req.body;
-    //         const basketItem = await BasketItem.create({ basketId, itemId });
-    //         return res.json(basketItem);
-    //     } catch (error) {
-    //         next(ApiError.internal(error.message));
-    //     }
-    // }
+    async delete(req, res, next) {
+        try {
+            const { basketItemId } = req.params;
+            const deletedItem = await BasketItem.destroy({ where: { id: basketItemId } });
+            if (!deletedItem) {
+                return res.status(404).json({ message: 'Basket item not found' });
+            }
+            return res.json({ message: 'Basket item deleted successfully' });
+        } catch (error) {
+            next(ApiError.internal(error.message));
+        }
+    }
+
     async append(req, res, next) {
         try {
             let { basketId, itemId } = req.body;

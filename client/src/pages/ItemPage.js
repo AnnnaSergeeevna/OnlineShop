@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Col, Container, Row, Card, Image, Button } from 'react-bootstrap';
 import star from './../assets/Black_star.svg.png';
-import '../Bootstrap.css';
+import '../Bootstrap.scss';
 import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
 import { fetchItem } from '../http/itemAPI';
@@ -30,13 +30,12 @@ const ItemPage = observer(() => {
     }, [basket, id]);
 
     const handleClick = async () => {
-        setIsActive(true);
         const basketId = basket.getBasketId();
         const itemId = item.id
         if (basketId) {
             try {
                 await addItemToBasket(basketId, itemId);
-                console.log(basketId, itemId)
+                setIsActive(true);
             } catch (error) {
                 console.error('Error adding item to basket:', error);
             } finally {

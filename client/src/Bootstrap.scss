@@ -326,10 +326,11 @@ a.custom-link {
   border-color: var(--bs-4) !important;
 }
 
-.primary-btn-to-cart.active {
+.primary-btn-to-cart:active {
   background-color: var(--bs-4) !important;
   border-color: var(--bs-4) !important;
-  animation: slide-out-top 1s ease-in, forwards;
+  animation: slide-out-top 1s ease-in, forwards !important;
+  ;
 }
 
 @keyframes slide-out-top {
@@ -424,6 +425,27 @@ a.custom-link {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
   }
+}
+
+
+.outline-plus-minus-btn {
+  border: solid var(--bs-6) !important;
+  width: 35px;
+  border-radius: 50px
+}
+
+.outline-plus-minus-btn:hover {
+  border: solid var(--bs-6) !important;
+  width: 35px;
+  border-radius: 50px
+}
+
+.outline-plus-minus-btn:active {
+  border: solid var(--bs-6) !important;
+  background-color: var(--bs-6);
+  color: #c8c8c8;
+  width: 35px;
+  border-radius: 50px
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";
