@@ -74,14 +74,14 @@ const NavBar = observer(() => {
                         )}
                     </div>
                 </Navbar.Collapse>
-                <FetchBasket><img
+                <FetchBasket><div><img
                     id="basket-img"
                     src={shoppingBag}
                     alt="Shopping Bag"
                     style={{ height: 60, backgroundColor: 'transparent', cursor: 'pointer' }}
                     onClick={handleBasketClick}
                     className='custom-nav-img'
-                /></FetchBasket>
+                /><span className='basket' style={{ position: 'absolute' }}>6</span></div></FetchBasket>
             </Container>
         </Navbar>
     );

@@ -35,6 +35,7 @@ const ItemPage = observer(() => {
         if (basketId) {
             try {
                 await addItemToBasket(basketId, itemId);
+                console.log(basketId, itemId)
                 setIsActive(true);
             } catch (error) {
                 console.error('Error adding item to basket:', error);

@@ -9,7 +9,7 @@ import { fetchBasketItems } from '../http/basketAPI';
 
 const BasketList = observer(() => {
     const { basket } = useContext(Context);
-    const [basketItems, setBasketItem] = useState([]);
+    const [items, setItem] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,7 +17,7 @@ const BasketList = observer(() => {
                 const basketId = basket.getBasketId()
                 const data = await fetchBasketItems(basketId);
                 const processedData = processBasketItems(data);
-                setBasketItem(processedData);
+                setItem(processedData);
                 basket.setBasketItems(processedData);
             } catch (error) {
                 console.error('Error fetching basket items:', error);
@@ -26,14 +26,15 @@ const BasketList = observer(() => {
         fetchData();
     }, [basket]);
 
-    const processBasketItems = (data) => {
+    const processBasketItems = (basketItems) => {
         const processedData = [];
-        data.forEach((basket) => {
-            const item = basket.item;
+        basketItems.forEach((basketItem) => {
+            const item = basketItem.item;
             const existingItem = processedData.find((i) => i.id === item.id);
             if (existingItem) {
                 existingItem.quantity += 1;
                 existingItem.totalPrice += item.price;
+                existingItem.basketIds.push(basketItem.id)
             } else {
                 processedData.push({
                     id: item.id,
@@ -42,6 +43,7 @@ const BasketList = observer(() => {
                     price: item.price,
                     quantity: 1,
                     totalPrice: item.price,
+                    basketIds: [basketItem.id]
                 });
             }
         });
@@ -51,20 +53,19 @@ const BasketList = observer(() => {
     return (
         <Table bordered hover size="sm" className="mt-3">
             <thead>
-                <tr>
-                    <th>Image</th>
+                <tr className='align-items-center' >
+                    <th style={{ width: 120 }}>Image</th>
                     <th>Name</th>
                     <th>Price, €</th>
                     <th>-</th>
                     <th>Quantity</th>
                     <th>+</th>
                     <th>Amount, €</th>
-                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
 
-                {basketItems.map(basketItem => <BasketItem key={basketItem.id} basketItem={basketItem} />)}
+                {items.map(item => <BasketItem key={item.id} item={item} />)}
             </tbody>
         </Table>
     );

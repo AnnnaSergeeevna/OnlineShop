@@ -11,14 +11,14 @@ export const addItemToBasket = async (basketId, itemId) => {
 }
 
 export const removeItemFromBasket = async (basketItemId) => {
-    const { data } = await $authHost.delete(`api/basket/${basketItemId}`);
-    console.timeLog('delete', basketItemId)
+    const { data } = await $authHost.delete(`api/basket/item/${basketItemId}`);
     return data;
 }
 export const fetchBasket = async () => {
     const { data } = await $authHost.get('basket/getone')
     return data
 }
+
 export const fetchBasketItems = async (basketId) => {
     const { data } = await $authHost.get(`api/basket/${basketId}`);
     return data;
