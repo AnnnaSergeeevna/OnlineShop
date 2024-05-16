@@ -8,12 +8,17 @@ import ItemStore from './store/ItemStore';
 import BasketStore from './store/BasketStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export const Context = createContext(null)
+export const Context = createContext(null);
+const basketStore = new BasketStore();
+
+
+
 root.render(
   <Context.Provider value={{
     user: new UserStore(),
     item: new ItemStore(),
-    basket: new BasketStore()
+    basket: basketStore,
+    basketId: basketStore.getBasketId()
   }}>
     <App />
   </Context.Provider>

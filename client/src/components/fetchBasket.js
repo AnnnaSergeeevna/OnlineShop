@@ -5,20 +5,23 @@ import { observer } from 'mobx-react-lite';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Bootstrap.css';
 import { Spinner } from 'react-bootstrap'
-import { fetchBasket, fetchBasketItems } from '../http/basketAPI';
-
+import { fetchBasketItems } from '../http/basketAPI';
 
 const FetchBasket = (props) => {
     const { basket } = useContext(Context)
     const [fetching, setFetching] = useState(true)
+    const [basketId, setBasketId] = useState(null);
 
     useEffect(() => {
-        if (basket) {
-            console.log("Before fetchBasketItems");
-            fetchBasketItems(basket.getBasketId())
+        setBasketId(basket.getBasketId());
+    }, [basket.getBasketId()]);
+
+    useEffect(() => {
+        if (basketId) {
+            fetchBasketItems(basketId)
                 .then(data => {
-                    console.log("Data received:", data);
-                    basket.products = data.products;
+                    basket.setBasketItems(data);
+                    console.log(data)
                     setFetching(false);
                 })
                 .catch(error => {
@@ -26,11 +29,8 @@ const FetchBasket = (props) => {
                     setFetching(false);
                 });
         }
-    }, [basket]);
+    }, [basketId, basket]);
 
-    if (fetching) {
-        return <Spinner animation="border" variant="light" />
-    }
     return props.children
 }
 

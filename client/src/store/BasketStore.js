@@ -6,6 +6,8 @@ export default class BasketStore {
         this._basket = {};
         this._basketItems = [];
         this._basketId = null;
+        this._basketQuantity = [];
+        this._totalQuantity = 0;
         makeAutoObservable(this)
     }
     setBasket(basket) {
@@ -15,8 +17,24 @@ export default class BasketStore {
     setBasketId(basketId) {
         this._basketId = basketId;
     }
+
     setBasketItems(basketItems) {
-        this._basketItems = basketItems;
+        if (Array.isArray(basketItems)) {
+            this._basketItems = basketItems;
+        } else {
+            this._basketItems = [basketItems];
+        }
+    }
+
+    setBasketQuantity(basketQuantity) {
+        this._basketQuantity = basketQuantity;
+    }
+    setTotalQuantity(quantity) {
+        this._totalQuantity = quantity;
+    }
+
+    getTotalQuantity() {
+        return this._totalQuantity;
     }
     getBasket() {
         return this._basket
@@ -25,10 +43,11 @@ export default class BasketStore {
     getBasketId() {
         return this._basketId;
     }
+
     getBasketItems() {
         return this._basketItems;
     }
-    get BasketItemsTotalCost() {
-        return this._basketItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    getBasketQuantity() {
+        return this._basketQuantity;
     }
 }

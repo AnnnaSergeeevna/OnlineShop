@@ -18,7 +18,7 @@ const BasketList = observer(() => {
                 const data = await fetchBasketItems(basketId);
                 const processedData = processBasketItems(data);
                 setItem(processedData);
-                basket.setBasketItems(processedData);
+
             } catch (error) {
                 console.error('Error fetching basket items:', error);
             }

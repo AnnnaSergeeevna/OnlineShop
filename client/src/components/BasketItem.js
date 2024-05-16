@@ -17,18 +17,22 @@ const BasketItem = ({ item }) => {
     const [amount, setAmount] = useState(item.totalPrice)
     const { basket } = useContext(Context);
 
-    function handlePlusQuantity() {
+    const handlePlusQuantity = async () => {
         setQuantity(quantity + 1);
-        setAmount(amount + item.totalPrice)
-        addItemToBasket(basket.getBasketId(), item.id)
-    }
-    function handleMinusQuantity() {
+        setAmount(amount + item.price);
+        await addItemToBasket(basket.getBasketId(), item.id);
+        basket.setBasketItems([...basket.getBasketItems(), item]);
+    };
+
+    const handleMinusQuantity = async () => {
         if (quantity > 0 || item.basketIds.length > 0) {
-            setQuantity(quantity - 1)
-            setAmount(amount - item.price)
-            removeItemFromBasket(item.basketIds.shift())
+            setQuantity(quantity - 1);
+            setAmount(amount - item.price);
+            await removeItemFromBasket(item.basketIds.shift());
+            basket.setBasketItems(basket.getBasketItems().slice().filter(basketItem => basketItem.id !== item.id));
         }
-    }
+    };
+
 
     return (
         <tr className='align-items-center justify-content-center'>
